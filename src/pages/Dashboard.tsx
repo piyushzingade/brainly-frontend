@@ -6,11 +6,12 @@ import { Button } from "../components/Button";
 import { ShareIcon } from "../icon/ShareIcon";
 import { PlusIcon } from "../icon/PlusIcon";
 import Card from "../components/Card";
+import { useContent } from "../hooks/useContent";
 
 
 export const Dashboard = () => {
   const [modalOpen, setModalOpen] = useState(false); // Default is false to keep modal closed initially
-
+  const contents = useContent();
   return (
     <div className="min-h-screen flex flex-col">
       {/* Content Modal */}
@@ -58,11 +59,11 @@ export const Dashboard = () => {
 
           {/* Cards */}
           <div className="py-4 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card title="Project Ideas" />
-            <Card title="How to Build a Second Brain" />
-            <Card title="Productivity Tip" />
-            <Card title="Another Note" />
-            <Card title="More Ideas" />
+            <Card
+              title="Asfdasf"
+              type="youtube"
+              link="https://x.com/Hiteshdotcom/status/1861688737400602838"
+            />
           </div>
         </div>
       </div>

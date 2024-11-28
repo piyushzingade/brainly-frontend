@@ -1,7 +1,8 @@
-import React, { ReactElement } from "react";
+
 import DocIcon from "../icon/DocIcon";
 import { ShareIcon } from "../icon/ShareIcon";
 import DeleteIcon from "../icon/DeleteIcon";
+import { ReactElement } from "react";
 
 interface HeaderProps {
   startIcon: ReactElement;
@@ -12,9 +13,12 @@ interface HeaderProps {
 
 interface CardProps {
   title: string;
+  type: string,
+  link: string
 }
 
 const Card = (props: CardProps) => {
+  
   return (
     <div className="bg-white w-96 h-80 rounded-3xl p-6 shadow-lg space-y-4">
       {/* Card Header */}
@@ -28,9 +32,12 @@ const Card = (props: CardProps) => {
       {/* Card Content */}
       <div>
         <h2 className="font-bold text-xl">{props.title}</h2>
-        <p className="text-sm text-gray-600">
+        {/* <p className="text-sm text-gray-600">
           Add description or content here for your notes.
-        </p>
+        </p> */}
+        <div className="mt-3 ">
+          {props.link} 
+        </div>
         <div className="mt-4 space-x-3">
           <span className="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">
             #productivity
@@ -42,17 +49,17 @@ const Card = (props: CardProps) => {
       </div>
 
       {/* Footer */}
-      <p className="text-xs text-gray-400">Added on 10/03/2024</p>
+      <p className="text-xs text-gray-400">Added on 10.2.34 </p>
     </div>
   );
 };
 
-const Header: React.FC<HeaderProps> = ({
+const Header =({
   startIcon,
   title,
   secondLastIcon,
   lastIcon,
-}) => {
+}  : HeaderProps) => {
   return (
     <div className="flex items-center justify-between">
       <div>{startIcon}</div>

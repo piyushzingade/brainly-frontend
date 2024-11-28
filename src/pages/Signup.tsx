@@ -18,9 +18,8 @@ export default function Signup() {
             username,
             password        
     })
-
-        alert("You have signed up!!!")
-        navigate("/dashboard")
+    navigate("/dashboard");
+    alert("You have signed up!!!")     
 }
   return (
     <div className="h-screen w-screen bg-gray-300 flex justify-center items-center ">
