@@ -5,7 +5,7 @@ import ContentModal from "../components/ContentModal";
 import { Button } from "../components/Button";
 import { ShareIcon } from "../icon/ShareIcon";
 import { PlusIcon } from "../icon/PlusIcon";
-import Card from "../components/Card";
+import {Card} from "../components/Card";
 import { useContent } from "../hooks/useContent";
 
 
@@ -58,11 +58,17 @@ export const Dashboard = () => {
           </div>
 
           {/* Cards */}
-          <div className="py-4 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="py-4 px-4 space-x-4 flex ">
+            {/* grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 */}
             <Card
-              title="Asfdasf"
+              title="Posts"
+              type="twitter"
+              link="https://x.com/QuotesFromVoid/status/1863455855871406322"
+            />
+            <Card
+              title="Posts"
               type="youtube"
-              link="https://x.com/Hiteshdotcom/status/1861688737400602838"
+              link="https://www.youtube.com/watch?v=nz1egTl7pxI"
             />
           </div>
         </div>

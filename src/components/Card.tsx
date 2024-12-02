@@ -1,75 +1,54 @@
-
-import DocIcon from "../icon/DocIcon";
-import { ShareIcon } from "../icon/ShareIcon";
 import DeleteIcon from "../icon/DeleteIcon";
-import { ReactElement } from "react";
-
-interface HeaderProps {
-  startIcon: ReactElement;
-  title: string;
-  secondLastIcon: ReactElement;
-  lastIcon: ReactElement;
-}
+import DocIcon from "../icon/DocIcon";
+import { ShareIcon } from "../icon/ShareIcon"
 
 interface CardProps {
-  title: string;
-  type: string,
-  link: string
+  title : string,
+  link : string,
+  type:  "youtube" | "twitter"
 }
 
-const Card = (props: CardProps) => {
-  
+export const Card = ({title , link , type} : CardProps) =>{
   return (
-    <div className="bg-white w-96 h-80 rounded-3xl p-6 shadow-lg space-y-4">
-      {/* Card Header */}
-      <Header
-        startIcon={<DocIcon size="md" />}
-        title={props.title}
-        secondLastIcon={<ShareIcon size="md" />}
-        lastIcon={<DeleteIcon size="md" />}
-      />
-
-      {/* Card Content */}
-      <div>
-        <h2 className="font-bold text-xl">{props.title}</h2>
-        {/* <p className="text-sm text-gray-600">
-          Add description or content here for your notes.
-        </p> */}
-        <div className="mt-3 ">
-          {props.link} 
+    <div>
+      <div className="p-4 rounded-lg bg-white border-gray-200 max-w-72 border ">
+        <div className="">
+          <div className="flex pr-3">
+            <div className="flex gap-3 items-center text-gray-500">
+              <DocIcon size="md" />
+              <h2>{title}</h2>
+            </div>
+            <div className="flex items-center space-x-3 pl-10">
+              <div className="pr-3 text-gray-500 cursor-pointer">
+                <a href={link} target="_blank">
+                  <ShareIcon size="md" />
+                </a>
+              </div>
+              <div className="text-gray-500 cursor-pointer ">
+                <DeleteIcon size="md" />
+              </div>
+            </div>
+          </div>
+          <div className="mt-3">
+            {type === "youtube" && (
+              <iframe
+                className="w-full rounded-lg"
+                src={link.replace("watch" , "embed").replace("?v=" , "/")}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            )}
+            {type === "twitter" && (
+              <blockquote className="twitter-tweet">
+                <a href={link.replace("x.com" , "twitter.com")}></a>
+              </blockquote>
+            )}
+          </div>
         </div>
-        <div className="mt-4 space-x-3">
-          <span className="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">
-            #productivity
-          </span>
-          <span className="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">
-            #ideas
-          </span>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <p className="text-xs text-gray-400">Added on 10.2.34 </p>
-    </div>
-  );
-};
-
-const Header =({
-  startIcon,
-  title,
-  secondLastIcon,
-  lastIcon,
-}  : HeaderProps) => {
-  return (
-    <div className="flex items-center justify-between">
-      <div>{startIcon}</div>
-      <div className="text-sm font-medium">{title}</div>
-      <div className="flex space-x-3">
-        <button>{secondLastIcon}</button>
-        <button>{lastIcon}</button>
       </div>
     </div>
   );
-};
-
-export default Card;
+}

@@ -70,7 +70,7 @@ export default function ContentModal({ open, onClose }: ContentModalProps) {
                     <Button
                       title="Twitter"
                       variant={
-                        type === ContentType.Youtube ? "primary" : "secondary"
+                        type === ContentType.Twitter ? "primary" : "secondary"
                       }
                       size="md"
                       onClick={() => {

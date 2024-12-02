@@ -18,7 +18,7 @@ export default function Signup() {
             username,
             password        
     })
-    navigate("/dashboard");
+    navigate("/signin");
     alert("You have signed up!!!")     
 }
   return (
