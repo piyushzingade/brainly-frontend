@@ -58,7 +58,7 @@ export const Dashboard = () => {
           </div>
 
           {/* Cards */}
-          <div className="py-4 px-4 space-x-4 flex ">
+          <div className="py-4 px-4 space-x-4 flex flex-wrap ">
             {/* grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 */}
             {contents.map(({type , title , link}) =>
                <Card

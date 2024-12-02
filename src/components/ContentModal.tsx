@@ -33,6 +33,7 @@ export default function ContentModal({ open, onClose }: ContentModalProps) {
       }
     })
     alert("Content Added")
+    onClose();
 
   }
 
