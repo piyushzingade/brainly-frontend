@@ -23,7 +23,7 @@ export default function ContentModal({ open, onClose }: ContentModalProps) {
   async function addContent(){
     const title = titleRef.current?.value;
     const link = linkRef.current?.value;
-    await axios.post(`${BACKEND_URL}/content` , {
+    await axios.post(`${BACKEND_URL}/api/v1/content` , {
       title,
       link,
       type
@@ -32,6 +32,7 @@ export default function ContentModal({ open, onClose }: ContentModalProps) {
         "token" : localStorage.getItem("token")
       }
     })
+    alert("Content Added")
 
   }
 
@@ -42,7 +43,7 @@ export default function ContentModal({ open, onClose }: ContentModalProps) {
           <div className="w-screen h-screen bg-slate-500 fixed top-0 left-0 opacity-60 flex justify-center">
             
           </div>
-          <div className="w-screen h-screen fixed top-0 left-0  flex justify-center">
+          <div className="w-screen h-screen fixed top-0 left-0  flex justify-center items-center">
             <div className="flex flex-col justify-center">
               <span className="bg-white opacity-100 p-4 rounded-lg">
                 <div className="flex justify-end">

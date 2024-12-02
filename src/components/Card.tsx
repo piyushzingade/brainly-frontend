@@ -11,7 +11,7 @@ interface CardProps {
 export const Card = ({title , link , type} : CardProps) =>{
   return (
     <div>
-      <div className="p-4 rounded-lg bg-white border-gray-200 max-w-72 border ">
+      <div className="p-4 rounded-lg bg-white border-gray-200 max-w-72 border min-h-48 min-w-72 ">
         <div className="">
           <div className="flex pr-3">
             <div className="flex gap-3 items-center text-gray-500">

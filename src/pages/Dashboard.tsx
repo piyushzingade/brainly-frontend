@@ -60,7 +60,14 @@ export const Dashboard = () => {
           {/* Cards */}
           <div className="py-4 px-4 space-x-4 flex ">
             {/* grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 */}
-            <Card
+            {contents.map(({type , title , link}) =>
+               <Card
+                    title={title}
+                    type={type}
+                    link={link}
+                />
+            )}
+            {/* <Card
               title="Posts"
               type="twitter"
               link="https://x.com/QuotesFromVoid/status/1863455855871406322"
@@ -69,7 +76,7 @@ export const Dashboard = () => {
               title="Posts"
               type="youtube"
               link="https://www.youtube.com/watch?v=nz1egTl7pxI"
-            />
+            /> */}
           </div>
         </div>
       </div>
