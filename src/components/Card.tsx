@@ -1,54 +1,38 @@
-import DeleteIcon from "../icon/DeleteIcon";
-import DocIcon from "../icon/DocIcon";
-import { ShareIcon } from "../icon/ShareIcon"
+import React, { forwardRef } from "react";
+import { cn } from "../lib/utils";
 
-interface CardProps {
-  title : string,
-  link : string,
-  type:  "youtube" | "twitter"
-}
+const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        "rounded-md border border-black/[0.2] bg-gradient-to-tr from-purple-400/10 to-transparent/5 dark:border-white/[0.2] bg-card text-card-foreground shadow-sm",
+        className
+      )}
+      {...props}
+    />
+  )
+);
+Card.displayName = "Card";
 
-export const Card = ({title , link , type} : CardProps) =>{
-  return (
-    <div>
-      <div className="p-4 rounded-lg bg-white border-gray-200 max-w-72 border min-h-48 min-w-72 ">
-        <div className="">
-          <div className="flex pr-3">
-            <div className="flex gap-3 items-center text-gray-500">
-              <DocIcon size="md" />
-              <h2>{title}</h2>
-            </div>
-            <div className="flex items-center space-x-3 pl-10">
-              <div className="pr-3 text-gray-500 cursor-pointer">
-                <a href={link} target="_blank">
-                  <ShareIcon size="md" />
-                </a>
-              </div>
-              <div className="text-gray-500 cursor-pointer ">
-                <DeleteIcon size="md" />
-              </div>
-            </div>
-          </div>
-          <div className="mt-3">
-            {type === "youtube" && (
-              <iframe
-                className="w-full rounded-lg"
-                src={link.replace("watch" , "embed").replace("?v=" , "/")}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              ></iframe>
-            )}
-            {type === "twitter" && (
-              <blockquote className="twitter-tweet">
-                <a href={link.replace("x.com" , "twitter.com")}></a>
-              </blockquote>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const CardHeader = forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    {...props}
+  />
+));
+CardHeader.displayName = "CardHeader";
+
+const CardContent = forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+));
+CardContent.displayName = "CardContent";
+
+export { Card, CardHeader, CardContent };

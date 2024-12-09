@@ -1,39 +1,165 @@
-import { useRef } from "react";
-import { Button } from "../components/Button";
-import { Input } from "../components/Input";
-import axios from "axios";
-import { BACKEND_URL } from "../components/config";
+import { useState } from "react";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
+import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ApiRoutes } from "../utils/ApiRoutes";
+import axios from "axios";
 
+export default function SignUp() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-export default function Signup() {
-    const usernameRef = useRef<HTMLInputElement>();
-    const passwordRef = useRef<HTMLInputElement>();
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    async function signup(){
-        const username = usernameRef.current?.value;
-        const password = passwordRef.current?.value;
-        await axios.post(`${BACKEND_URL}/api/v1/signup` , {
-            username,
-            password        
-    })
-    navigate("/signin");
-    alert("You have signed up!!!")     
-}
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoading(true);
+    setErrors({});
+
+    // console.log({username, email, password});
+
+    // Form validation
+    let newErrors: { [key: string]: string } = {};
+    if (!username.trim()) newErrors.username = "Username is required";
+    if (!email.trim()) newErrors.email = "Email is required";
+    if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email is invalid";
+    if (!password) newErrors.password = "Password is required";
+    if (password.length < 8)
+      newErrors.password = "Password must be at least 8 characters";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setIsLoading(false);
+      return;
+    }
+
+    // console.log("signup form data: ", username, email, password)
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const body = JSON.stringify({ username, email, password });
+      const res = await axios.post(ApiRoutes.signup, body, config);
+      // console.log(res);
+      if (res.status == 200) {
+        // todo: add otpverification route here
+        navigate("/signin");
+      } else {
+        newErrors.email = "Email Already exists try login in.";
+      }
+    } catch (error) {
+      newErrors.email =
+        "Email already exists try loggin in with this email. Or use different email!";
+      console.log(errors);
+    }
+  }
+
   return (
-    <div className="h-screen w-screen bg-gray-300 flex justify-center items-center ">
-      <div className="bg-white rounded-xl min-w-48 p-8 border-2 space-y-3">
-        <Input placeholder="Username" reference={usernameRef} />
-        <Input placeholder="Password" reference={passwordRef} />
-        <div className="flex justify-center pt-4">
-          <Button
-            onClick={signup}
-            title="Signup"
-            variant="primary"
-            fullWidth={true}
-            size="md"
-          />
+    <div className="container min-h-screen flex flex-col justify-center items-center  lg:max-w-none lg:px-0">
+      <div className="lg:p-8">
+        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+          <div className="flex flex-col space-y-2 text-center">
+            <h1 className="text-2xl font-semibold tracking-tight bg-gradient-to-tr  from-purple-300/80 to-white/90 bg-clip-text text-transparent">
+              Create an account
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              Enter your email below to create your account
+            </p>
+          </div>
+          <div className="grid gap-6">
+            <form onSubmit={onSubmit}>
+              <div className="grid gap-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="email">Username</Label>
+                  <Input
+                    id="username"
+                    placeholder="user123"
+                    type="text"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    disabled={isLoading}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                  {errors.username && (
+                    <p className="text-sm text-red-500">{errors.username}</p>
+                  )}
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    placeholder="name@example.com"
+                    type="email"
+                    autoCapitalize="none"
+                    autoComplete="email"
+                    autoCorrect="off"
+                    disabled={isLoading}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {errors.email && (
+                    <p className="text-sm text-red-500">{errors.email}</p>
+                  )}
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="password">Password</Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    disabled={isLoading}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  {errors.password && (
+                    <p className="text-sm text-red-500">{errors.password}</p>
+                  )}
+                </div>
+                <Button
+                  className="bg-[#5E43EC] hover:bg-[#4930c9] text-gray-100"
+                  disabled={isLoading}
+                >
+                  {isLoading && (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  )}
+                  Sign Up
+                </Button>
+              </div>
+            </form>
+          </div>
+          <p className="px-8 text-center text-sm text-muted-foreground">
+            By signing up, you are agreeing to our{" "}
+            <a
+              href="/tos"
+              className="hover:text-brand underline hover:text-gray-200 underline-offset-4"
+            >
+              Terms of Service
+            </a>{" "}
+            and{" "}
+            <a
+              href="/privacy"
+              className="hover:text-brand hover:text-gray-200 underline underline-offset-4"
+            >
+              Privacy Policy
+            </a>
+            .
+          </p>
+          <p className="px-8 text-center text-sm text-muted-foreground">
+            <a
+              href="/signin"
+              className="hover:text-brand hover:text-gray-200 underline underline-offset-4"
+            >
+              Already have an account? Sign In
+            </a>
+          </p>
         </div>
       </div>
     </div>
