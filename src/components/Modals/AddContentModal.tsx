@@ -7,7 +7,7 @@ import { apiConnector } from "../../operations/apiconnector";
 import { endPoints } from "../../operations/api";
 import toast from "react-hot-toast";
 import { useSetRecoilState } from "recoil";
-import { contentAtom, contentRefreshTriggerAtom } from "../Recoil/store/atom/contentAtom";
+import { contentAtom, contentRefreshTriggerAtom } from "../../Recoil/store/atom/contentAtom";
 import { Navigate } from "react-router-dom";
 
 interface ModalProps {

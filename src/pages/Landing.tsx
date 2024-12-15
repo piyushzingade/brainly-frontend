@@ -2,10 +2,10 @@
 
 import { FaHome, } from "react-icons/fa";
 
-import { FloatingNav } from "../ui/floating-navBar";
+import { FloatingNav } from "../components/ui/floating-navBar";
 
-import { GoogleGeminiEffectDemo } from "../shadcn/GoogleGemini";
-import { BentoGridThirdDemo } from "../shadcn/BentoGrid";
+import { GoogleGeminiEffectDemo } from "../components/shadcn/GoogleGemini";
+import { BentoGridThirdDemo } from "../components/shadcn/BentoGrid";
 import { MdSpaceDashboard } from "react-icons/md";
 
 export function LandingPage(){

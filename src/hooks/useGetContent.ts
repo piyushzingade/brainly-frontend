@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { apiConnector } from "../../operations/apiconnector";
-import { endPoints } from "../../operations/api";
+import { apiConnector } from "../operations/apiconnector";
+import { endPoints } from "../operations/api";
 import { useRecoilValue} from "recoil";
 import {  contentRefreshTriggerAtom } from "../Recoil/store/atom/contentAtom";
 

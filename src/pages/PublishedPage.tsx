@@ -1,11 +1,11 @@
 import  { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { apiConnector } from '../../operations/apiconnector'
-import { endPoints } from '../../operations/api'
+import { apiConnector } from '../operations/apiconnector'
+import { endPoints } from '../operations/api'
 
 import { useRecoilValue } from 'recoil'
 import { contentAtom } from '../Recoil/store/atom/contentAtom'
-import { PublishedCard } from '../cards/PublishedCard'
+import { PublishedCard } from '../components/cards/PublishedCard'
 
 
 const PublishedBrain = () => {

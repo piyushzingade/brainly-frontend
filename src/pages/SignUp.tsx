@@ -1,8 +1,8 @@
 
 import { useForm } from "react-hook-form"
 import {  useNavigate } from "react-router-dom";
-import { apiConnector } from "../../operations/apiconnector";
-import { endPoints } from "../../operations/api";
+import { apiConnector } from "../operations/apiconnector";
+import { endPoints } from "../operations/api";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";

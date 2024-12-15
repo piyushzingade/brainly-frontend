@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { FaYoutube, FaTwitter, FaMusic, FaLink, FaPlus, FaShare } from "react-icons/fa";
 import Brain1 from "../../assets/Brain1 (1).png"
-import { AddContentModal } from "../Modals/AddContentModal";
-import { ShareModal } from "../Modals/ShareModal";
+import { AddContentModal } from "../components/Modals/AddContentModal";
+import { ShareModal } from "../components/Modals/ShareModal";
 import useGetContent from "../hooks/useGetContent";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { allContentAtom, contentAtom } from "../Recoil/store/atom/contentAtom";
-import { Card } from "../cards/DashBoardCard";
-import { apiConnector } from "../../operations/apiconnector";
-import { endPoints } from "../../operations/api";
+import { Card } from "../components/cards/DashBoardCard";
+import { apiConnector } from "../operations/apiconnector";
+import { endPoints } from "../operations/api";
 import toast from "react-hot-toast";
 import { FaBrain } from "react-icons/fa6";
 
 import { IconLogout } from "@tabler/icons-react";
-import { LogOutModal } from "../Modals/LogOutModal";
+import { LogOutModal } from "../components/Modals/LogOutModal";
 import { useNavigate } from "react-router-dom";
-import { Shimmer } from "../cards/Shimmer";
-import UnPublishBrain from "../UnPublishBrain";
+import { Shimmer } from "../components/cards/Shimmer";
+import UnPublishBrain from "../components/UnPublishBrain";
 
 
 export function DashBoard() {

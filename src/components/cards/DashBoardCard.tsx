@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { apiConnector } from "../../operations/apiconnector";
 import { endPoints } from "../../operations/api";
 import { useSetRecoilState } from "recoil";
-import { contentRefreshTriggerAtom } from "../Recoil/store/atom/contentAtom";
+import { contentRefreshTriggerAtom } from "../../Recoil/store/atom/contentAtom";
 import { useState } from "react";
 import { EditContentModal } from "../Modals/EditContentModal";
 interface CardProps {
