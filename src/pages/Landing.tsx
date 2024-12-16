@@ -33,7 +33,7 @@ export function LandingPage(){
 // <div class="bg-gradient-to-r from-cyan-500 to-blue-500 ..."></div>
     return (
       <div className="bg-black w-full ">
-        <div className="fixed">
+        <div className="fixed top-0 w-full z-50">
           <FloatingNav navItems={navItems} />
         </div>
 
