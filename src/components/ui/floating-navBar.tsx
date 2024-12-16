@@ -41,7 +41,7 @@ export const FloatingNav = ({
           key={`link=${idx}`}
           href={navItem.link}
           className={cn(
-            "relative flex items-center space-x-1 text-neutral-600 dark:text-neutral-50 hover:text-neutral-500 dark:hover:text-neutral-300"
+            "relative flex items-center space-x-1 text-neutral-600 dark:text-neutral-50 hover:text-blue-500 dark:hover:text-blue-500"
           )}
         >
           <span className="block sm:hidden">{navItem.icon}</span>
@@ -50,7 +50,7 @@ export const FloatingNav = ({
       ))}
 
       {!localStorage.getItem("token") ? (
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <button
             onClick={() => {
               navigate("/signin");
