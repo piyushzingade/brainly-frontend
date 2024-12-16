@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { FaYoutube, FaTwitter, FaMusic, FaLink, FaPlus, FaShare } from "react-icons/fa";
-import Brain1 from "../../assets/Brain1 (1).png"
 import { AddContentModal } from "../components/Modals/AddContentModal";
 import { ShareModal } from "../components/Modals/ShareModal";
 import useGetContent from "../hooks/useGetContent";
@@ -11,7 +10,7 @@ import { apiConnector } from "../operations/apiconnector";
 import { endPoints } from "../operations/api";
 import toast from "react-hot-toast";
 import { FaBrain } from "react-icons/fa6";
-
+import Brain1 from "../assets/Brain1.png";
 import { IconLogout } from "@tabler/icons-react";
 import { LogOutModal } from "../components/Modals/LogOutModal";
 import { useNavigate } from "react-router-dom";
@@ -161,7 +160,7 @@ console.log(fetched)
             onClick={() => setOpen(!open)}
           />
           <div onClick={() => {
-            navigate("/")
+            navigate("/") 
           }} className={`${open ? "" : "w-10"} flex cursor-pointer  gap-x-2 -ml-2 items-center`}>
             <img
               width={"100px"}

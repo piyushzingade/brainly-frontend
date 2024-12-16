@@ -2,7 +2,7 @@
 import { cn } from "../../lib/utils";
 import { motion, MotionValue } from "framer-motion";
 import { useEffect, useState } from "react";
-import Brain1 from "../../assets/Brain1 (1).png" 
+import Brain1 from "../../assets/Brain1.png";
 
 import { FlipWordsDemo } from "../shadcn/FlipWords";
 

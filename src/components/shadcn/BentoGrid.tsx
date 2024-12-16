@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "../../lib/utils";
-import Brain1 from "../../assets/Brain1 (1).png"
+import Brain1 from "../../assets/Brain1.png";
 
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 import {
