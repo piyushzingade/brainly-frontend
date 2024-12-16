@@ -9,7 +9,6 @@ import {
 import { cn } from "../../lib/utils";
 // import Link from "@next/link";
 import {  useNavigate } from "react-router-dom";
-
 import toast from "react-hot-toast";
 
 export const FloatingNav = ({
@@ -24,7 +23,7 @@ export const FloatingNav = ({
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [visible, setVisible] = useState(true);
 
@@ -39,7 +38,7 @@ export const FloatingNav = ({
         },
     })
     navigate("/")
-}
+  }
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
@@ -90,32 +89,42 @@ export const FloatingNav = ({
           </a>
         ))}
 
+        {!localStorage.getItem("token") ? (
+          <div className="flex gap-2">
+            <button
+              onClick={() => {
+                navigate("/signin");
+              }}
+              className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full hover:bg-blue-700"
+            >
+              <span>Login</span>
+              <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
+            </button>
 
-      {!localStorage.getItem("token")?  (<div className="flex gap-2"><button onClick={() => {
-          navigate("/signin")
-        }} className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
-          <span>Login</span>
-          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </button>
-
-
-        <button onClick={() => {
-          navigate("/signup")
-        }} className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
-          <span>Sign Up</span>
-          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </button></div>):<div className="">
-        {/* <IconLogout /> */}
-        <button onClick={() => {
-         logOutHandler()
-        }} className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
-          <span>Logout</span>
-          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </button>
-
-          </div>}
-
-
+            <button
+              onClick={() => {
+                navigate("/signup");
+              }}
+              className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full hover:bg-blue-700"
+            >
+              <span>Sign Up</span>
+              <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
+            </button>
+          </div>
+        ) : (
+          <div className="">
+            {/* <IconLogout /> */}
+            <button
+              onClick={() => {
+                logOutHandler();
+              }}
+              className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full hover:bg-blue-700"
+            >
+              <span>Logout</span>
+              <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
+            </button>
+          </div>
+        )}
       </motion.div>
     </AnimatePresence>
   );

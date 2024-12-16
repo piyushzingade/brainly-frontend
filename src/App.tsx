@@ -8,7 +8,7 @@ import { SignUp } from './pages/SignUp'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import  { Toaster } from 'react-hot-toast';
 import ProtectedRoute from './components/RouteType/ProtectedRoute'
-import { BentoGridThirdDemo } from './components/shadcn/BentoGrid'
+// import { BentoGridThirdDemo } from './components/shadcn/BentoGrid'
 
 import PublishedBrain from './pages/PublishedPage'
 import { Shimmer } from './components/cards/Shimmer'
@@ -17,12 +17,10 @@ import { Shimmer } from './components/cards/Shimmer'
 function App() {
   return (
     <BrowserRouter>
-    
       <RecoilRoot>
-
         <Routes>
           <Route path='/' element={<LandingPage />} />
-          <Route path='/bento' element={< BentoGridThirdDemo/>} />
+          {/* <Route path='/bento' element={< BentoGridThirdDemo/>} /> */}
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />} />
            <Route path="/shimmer" element={<Shimmer />} /> 
@@ -32,11 +30,10 @@ function App() {
             } 
             />
         </Routes>
-
       </RecoilRoot>
-      <Toaster/>
+      <Toaster />
     </BrowserRouter>
-  )
+  );
 }
 
 export default App
