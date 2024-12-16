@@ -1,6 +1,4 @@
 "use client";
-
-
 // import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 import { FaHome, FaUser } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
@@ -28,7 +26,7 @@ export function FloatingNavDemo() {
     },
   ];
   return (
-    <div className=" w-full  bg-black h-screen">
+    <div className=" w-full bg-black h-screen">
       <FloatingNav navItems={navItems} />
      <ThreeDCardDemo/>
      <ThreeDCardDemo/>

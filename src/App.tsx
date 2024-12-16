@@ -20,7 +20,6 @@ function App() {
       <RecoilRoot>
         <Routes>
           <Route path='/' element={<LandingPage />} />
-          {/* <Route path='/bento' element={< BentoGridThirdDemo/>} /> */}
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />} />
            <Route path="/shimmer" element={<Shimmer />} /> 

@@ -31,27 +31,20 @@ export function LandingPage(){
 
 
 // <div class="bg-gradient-to-r from-cyan-500 to-blue-500 ..."></div>
-    return <div className="bg-black w-full  ">
-         <FloatingNav navItems={navItems} />
-         <GoogleGeminiEffectDemo/>
-    
-     {/* <div className="h-screen w-full flex justify-between px-10 -10 items-center ">
-        <div className="text-white">
-            Put your first brain into
-        <Cover className=""  >
-      <h1> Second Brain</h1>
-     </Cover> 
+    return (
+      <div className="bg-black w-full ">
+        <div className="fixed">
+          <FloatingNav navItems={navItems} />
         </div>
-    
-       <ThreeDCardDemo/>
-       </div> */}
-     <div className="bg-black min-h-screen mt-[10px]">
-       <div className=" p-8">
-       < BentoGridThirdDemo/>
-       </div>
-       {/* <ThreeDCardDemo/> */}
-       </div>
-     
 
-    </div>
+        <GoogleGeminiEffectDemo />
+
+        <div className="bg-black min-h-screen mt-[10px]">
+          <div className=" p-8">
+            <BentoGridThirdDemo />
+          </div>
+          {/* <ThreeDCardDemo/> */}
+        </div>
+      </div>
+    );
 }

@@ -25,7 +25,7 @@ export const GoogleGeminiEffect = ({
 
 
   const [visible,setVisible]=useState(false);
-  console.log("Re-Render")
+  // console.log("Re-Render")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,11 +53,6 @@ export const GoogleGeminiEffect = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-
-
-
-
 
   return (
     <>
