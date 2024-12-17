@@ -10,11 +10,6 @@ import { IoEyeOff, IoEyeSharp } from "react-icons/io5";
 
 
 export function SignUp() {
-
-
-
-
-
     const navigate = useNavigate()
     const { register, handleSubmit,  } = useForm();
     const [loading, setLoading] = useState(false)
@@ -23,12 +18,11 @@ export function SignUp() {
     const onSubmit = (data: any) => {
         
         const fetchData = async () => {
-            let clock
+            let clock;
             try {
                 setLoading(true)
 
-
-                 clock=  setTimeout(() => {
+                clock=  setTimeout(() => {
                     toast.loading("Backend is hosted on free cluster.So it may take longer.", {
                         duration: 7000, position: 'top-center',
                         style: {
@@ -37,7 +31,7 @@ export function SignUp() {
                         },
                     })
                 }, 5000);
-           await apiConnector({
+                await apiConnector({
                     method: "post",
                     url: endPoints.SIGN_UP,
                     bodyData: {
@@ -46,8 +40,6 @@ export function SignUp() {
                     }
 
                 });
-
-
                 setLoading(false)
                 toast.success("User Registered ", {
                     duration: 3000, position: 'top-center',

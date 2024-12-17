@@ -36,7 +36,7 @@ export function SignIn() {
             }, 5000);
 
                 setLoading(true)
-              const response = await apiConnector({
+                const response = await apiConnector({
                 method: "post",
                 url: endPoints.SIGN_IN,
                 bodyData:{
@@ -45,7 +45,6 @@ export function SignIn() {
                 }
     
                
-                
               });
               localStorage.setItem("token",response.data.token)
             //   console.log("Response Data:", response.data);

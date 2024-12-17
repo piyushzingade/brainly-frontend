@@ -54,9 +54,6 @@ console.log(fetched)
     if (allContent) {
       setContent(allContent);
       setAllContent(allContent);
-
-
-
     }
  
 
@@ -84,7 +81,7 @@ console.log(fetched)
       // console.log(response.data.hash)
       const hash = response?.data?.hash;
       if (hash) {
-        const baseUrl = "https://brainly-100xdevs.vercel.app/share";
+        const baseUrl = "http://localhost:5173/share";
         setShareUrl(`${baseUrl}/${hash}`);
         // console.log("Updated Share URL:", `${baseUrl}/${hash}`);
         toast.success("Brain Published", {
@@ -151,14 +148,14 @@ console.log(fetched)
         {/* sidebar */}
         <div
           className={` ${open ? "w-72" : "w-16 "
-            } bg-dark-purple h-screen p-5 rounded-md  border-[1px]   border-gray-600 pt- relative duration-300`}
+            } bg-dark-purple h-screen p-5 rounded-md  border-[1px]  border-gray-600 pt- relative duration-300`}
         >
-          <img
+          {/* <img
             src={Brain1}
             className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border- rounded-full  ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
-          />
+          /> */}
           <div onClick={() => {
             navigate("/") 
           }} className={`${open ? "" : "w-10"} flex cursor-pointer  gap-x-2 -ml-2 items-center`}>
@@ -216,7 +213,6 @@ console.log(fetched)
 
 
         <div className="overflow-y-scroll  flex-1 p-7">
-
           <div className={`text-2xl  bg-black  flex justify-between items-center text-white  font-semibold `}>
             Workspace
             <UnPublishBrain shareUrl={shareUrl} />

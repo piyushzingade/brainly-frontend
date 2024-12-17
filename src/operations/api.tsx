@@ -3,7 +3,7 @@
 
 
 
-export const BASE_URL = "https://second-brain-dcnd.vercel.app/?vercelToolbarCode=mwYNP7PN3YeashF"
+export const BASE_URL =  "http://localhost:3000"
 export const endPoints={
     SIGN_UP:`${BASE_URL}/api/v1/signup`,
     SIGN_IN:`${BASE_URL}/api/v1/signin`,
